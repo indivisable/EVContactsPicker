@@ -276,10 +276,13 @@ import ContactsUI
                     }
 
                     
-                    if(tmpContact.imageDataAvailable) {
-                        let imgData = tmpContact.imageData
-                        let img = UIImage(data: imgData!)
-                        mutableContact.image = img
+                   if(tmpContact.imageDataAvailable) {
+                        if let imgData = tmpContact.imageData {
+                            let img = UIImage(data: imgData)
+                            mutableContact.image = img
+                        } else {
+                            mutableContact.image = self.avatarImage
+                        }
                     } else {
                         mutableContact.image = self.avatarImage
                     }
